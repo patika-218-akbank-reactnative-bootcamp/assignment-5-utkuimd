@@ -1,20 +1,53 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+import {View, Text} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-export default function App() {
+import SignIn from './src/pages/login/SignIn';
+import SignUp from './src/pages/login/SignUp';
+
+const Stack = createNativeStackNavigator();
+
+const MainStackNavigator = () => {
   return (
-    <View style={styles.container}>
-      <Text>This is Spotify Clone App with build Expo CLI.</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <Stack.Navigator>
+      <Stack.Screen name="LoginScreens" component={LoginStack} />
+      <Stack.Screen name="MainScreens" component={MainStack} />
+    </Stack.Navigator>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+const LoginStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="SignInScreen" component={SignIn} />
+      <Stack.Screen name="SignUpScreen" component={SignUp} />
+    </Stack.Navigator>
+  )
+}
+
+const MainStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="EmptyScreen" component={Empty} />
+    </Stack.Navigator>
+  )
+}
+
+const Empty = () => {
+  return (
+    <View>
+      <Text>Empty Screen!</Text>
+    </View>
+  )
+}
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <MainStackNavigator />
+    </NavigationContainer>
+  );
+};
+
+export default App;
