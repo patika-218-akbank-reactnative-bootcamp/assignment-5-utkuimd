@@ -3,6 +3,7 @@ import {View, Text} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { Provider } from 'react-redux';
 import { store } from './src/store/store';
@@ -13,8 +14,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import SignIn from './src/pages/login/SignIn';
 import SignUp from './src/pages/login/SignUp';
+import Profile from './src/pages/main/profile/Profile';
+import Settings from './src/pages/main/profile/Settings';
+import ChangeTheme from './src/pages/main/profile/ChangeTheme';
+import EditProfile from './src/pages/main/profile/EditProfile';
 
 const Stack = createNativeStackNavigator();
+const BottomTab = createBottomTabNavigator();
 
 const MainStackNavigator = () => {
   const user = useSelector(state => state.user);
@@ -34,7 +40,7 @@ const MainStackNavigator = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       {
         user.user ? (
-          <Stack.Screen name="MainScreens" component={MainStack} />
+          <Stack.Screen name="MainScreens" component={MainBottomTab} />
         ) : (
           <Stack.Screen name="LoginScreens" component={LoginStack} />
         )
@@ -52,22 +58,29 @@ const LoginStack = () => {
   )
 }
 
-const MainStack = () => {
+const MainBottomTab = () => {
+  return (
+    <BottomTab.Navigator>
+      <BottomTab.Screen name="HomeScreen" component={Empty} />
+      <BottomTab.Screen name="SearchScreen" component={Empty} />
+      <BottomTab.Screen name="ProfileScreens" component={ProfileStack} options={{headerShown: false}} />
+    </BottomTab.Navigator>
+  )
+}
+
+const ProfileStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="EmptyScreen" component={Empty} />
+      <Stack.Screen name="ProfileScreen" component={Profile} />
+      <Stack.Screen name="SettingsScreen" component={Settings} />
+      <Stack.Screen name="ChangeThemeScreen" component={ChangeTheme} />
+      <Stack.Screen name="EditProfileScreen" component={EditProfile} />
     </Stack.Navigator>
   )
 }
 
 const Empty = () => {
-  const dispatch = useDispatch();
   const user = useSelector(state => state.user);
-
-  const logout = async () => {
-    await AsyncStorage.removeItem('user');
-    dispatch(setUser(null));
-  }
 
   const showUser = async () => {
     const userData = await AsyncStorage.getItem('user');
@@ -77,21 +90,13 @@ const Empty = () => {
 
   const showUserInRedux = () => {
     console.log(user);
-    return (
-      <View>
-        <Text>{JSON.parse(user.user).email}</Text>
-        <Text>{JSON.parse(user.user).username}</Text>
-      </View>
-    )
   }
 
   return (
     <View>
       <Text>Empty Screen!</Text>
-      <Text onPress={logout}>Logout!</Text>
       <Text onPress={showUser}>Show User!</Text>
       <Text onPress={showUserInRedux}>Show user in Redux!</Text>
-      {showUserInRedux()}
     </View>
   )
 }
