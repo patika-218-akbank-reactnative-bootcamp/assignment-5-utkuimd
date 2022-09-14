@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
+import { updateProfile } from "firebase/auth";
 import { auth } from '../../../store/firebase';
 import styles from './SignUp.style';
 
@@ -22,9 +23,12 @@ const SignUp = () => {
   const handlePostUser = () => {
     if (password === passwordAgain) {
       createUserWithEmailAndPassword(auth, email, password)
-        .then(response => {
-          const user = response.user;
-          console.log('Signed up was successful: ', user.email);
+        .then(() => {
+          updateProfile(auth.currentUser, {
+            displayName: username,
+            photoURL: "https://avatars.githubusercontent.com/u/107312837?v=4"
+          })
+          .catch(error => Alert.alert(error.message));
           setEmail('');
           setPassword('');
           setPasswordAgain('');

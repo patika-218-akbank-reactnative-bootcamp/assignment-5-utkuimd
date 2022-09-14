@@ -76,7 +76,13 @@ const Empty = () => {
   }
 
   const showUserInRedux = () => {
-    console.log(user)
+    console.log(user);
+    return (
+      <View>
+        <Text>{JSON.parse(user.user).email}</Text>
+        <Text>{JSON.parse(user.user).username}</Text>
+      </View>
+    )
   }
 
   return (
@@ -85,6 +91,7 @@ const Empty = () => {
       <Text onPress={logout}>Logout!</Text>
       <Text onPress={showUser}>Show User!</Text>
       <Text onPress={showUserInRedux}>Show user in Redux!</Text>
+      {showUserInRedux()}
     </View>
   )
 }

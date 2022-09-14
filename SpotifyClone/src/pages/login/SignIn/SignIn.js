@@ -27,11 +27,15 @@ const SignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
     .then(response => {
       const user = response.user;
-      AsyncStorage.setItem('user', JSON.stringify(user));
-      dispatch(setUser(JSON.stringify(user)));
+      const userNeededData = {
+        email: user.email,
+        username: user.displayName,
+        photoURL: user.photoURL
+      };
+      AsyncStorage.setItem('user', JSON.stringify(userNeededData));
+      dispatch(setUser(JSON.stringify(userNeededData)));
       setEmail('');
       setPassword('');
-      console.log('Signed in was successful: ', user.email);
     })
     .catch(error => Alert.alert(error.message));
   };
