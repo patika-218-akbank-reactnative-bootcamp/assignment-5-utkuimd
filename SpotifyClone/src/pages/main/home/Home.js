@@ -1,15 +1,20 @@
 import React from 'react';
-import { SafeAreaView, View, Text } from 'react-native';
+import { SafeAreaView, FlatList } from 'react-native';
 import Categories from '../../../components/Categories';
+import Musiclist from '../../../components/Musiclist';
 import { useSelector } from 'react-redux';
 import styles from './Home.style';
 
 const Home = () => {
     const musicList = useSelector(state => state.musicList);
+    const renderMusic = ({item}) => <Musiclist music={item} />
   return (
       <SafeAreaView style={styles.container}>
-          <Categories />
-          <Text>{JSON.stringify(musicList)}</Text>
+          <FlatList
+            ListHeaderComponent={<Categories />}
+            data={musicList.musicList.data}
+            renderItem={renderMusic}
+          />
       </SafeAreaView>
   )
 }
