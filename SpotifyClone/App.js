@@ -18,6 +18,7 @@ import Profile from './src/pages/main/profile/Profile';
 import Settings from './src/pages/main/profile/Settings';
 import ChangeTheme from './src/pages/main/profile/ChangeTheme';
 import EditProfile from './src/pages/main/profile/EditProfile';
+import Home from './src/pages/main/home';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -61,7 +62,7 @@ const LoginStack = () => {
 const MainBottomTab = () => {
   return (
     <BottomTab.Navigator>
-      <BottomTab.Screen name="HomeScreen" component={Empty} />
+      <BottomTab.Screen name="HomeScreen" component={Home} />
       <BottomTab.Screen name="SearchScreen" component={Empty} />
       <BottomTab.Screen name="ProfileScreens" component={ProfileStack} options={{headerShown: false}} />
     </BottomTab.Navigator>
