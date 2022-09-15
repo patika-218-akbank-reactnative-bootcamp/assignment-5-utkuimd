@@ -14,10 +14,26 @@ const userSlice = createSlice({
     },
 });
 
+const musicListSlice = createSlice({
+    name: 'musicList',
+    initialState: {
+        musicList: [],
+    },
+    reducers: {
+        setMusicList: (state, action) => {
+            return {
+                musicList: action.payload,
+            };
+        },
+    },
+});
+
 export const {setUser} = userSlice.actions;
+export const {setMusicList} = musicListSlice.actions;
 
 export const store = configureStore({
     reducer: combineReducers({
         user: userSlice.reducer,
+        musicList: musicListSlice.reducer,
     }),
 });
