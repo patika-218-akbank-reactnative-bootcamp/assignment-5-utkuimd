@@ -3,12 +3,19 @@ import {StyleSheet, Dimensions} from 'react-native';
 export default StyleSheet.create({
     container: {
         width: '100%',
-        height: '30%',
-        backgroundColor: 'blue',
+        height: Dimensions.get('screen').height / 4,
+        justifyContent: 'center',
+      },
+      title: {
+        fontSize: 28,
+        fontWeight: 'bold',
+        marginLeft: 30,
+        marginBottom: 10,
+      },
+      categories: {
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'center',
-        alignContent: 'center',
         alignItems: 'center',
         paddingRight: 10,
       },

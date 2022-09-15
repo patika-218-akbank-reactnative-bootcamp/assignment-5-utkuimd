@@ -17,28 +17,31 @@ const Categories = () => {
         .catch((error) => Alert.alert(error.message));
     }
 
-    const getGenres = () => {
+    /*const getGenres = () => {
         axios.get('https://api.deezer.com/genre')
         .then((response) => {
             dispatch(setMusicList(response.data));
         })
         .catch((error) => Alert.alert(error.message));
-    }
+    }*/
 
   return (
     <SafeAreaView style={styles.container}>
-      <Pressable style={styles.categoryArea} onPress={() => getMusics('albums')}>
-        <Text style={styles.categoryText}>Albums</Text>
-      </Pressable>
-      <Pressable style={styles.categoryArea} onPress={() => getMusics('artists')}>
-        <Text style={styles.categoryText}>Artists</Text>
-      </Pressable>
-      <Pressable style={styles.categoryArea} onPress={() => getMusics('playlists')}>
-        <Text style={styles.categoryText}>Playlists</Text>
-      </Pressable>
-      <Pressable style={styles.categoryArea} onPress={() => getGenres()}>
-        <Text style={styles.categoryText}>Genres</Text>
-      </Pressable>
+      <Text style={styles.title}>Playlists & Categories</Text>
+      <View style={styles.categories}>
+        <Pressable style={styles.categoryArea} onPress={() => getMusics('albums')}>
+          <Text style={styles.categoryText}>Albums</Text>
+        </Pressable>
+        <Pressable style={styles.categoryArea} onPress={() => getMusics('artists')}>
+          <Text style={styles.categoryText}>Artists</Text>
+        </Pressable>
+        <Pressable style={styles.categoryArea} onPress={() => getMusics('playlists')}>
+          <Text style={styles.categoryText}>Playlists</Text>
+        </Pressable>
+        <Pressable style={styles.categoryArea} onPress={() => getMusics('tracks')}>
+          <Text style={styles.categoryText}>Tracks</Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   )
 }
