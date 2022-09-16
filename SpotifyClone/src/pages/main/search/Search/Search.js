@@ -1,12 +1,15 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { SafeAreaView, View, Text } from 'react-native';
+import Searchbar from '../../../../components/Searchbar';
+import Genres from '../../../../components/Genres';
 import styles from './Search.style';
 
 const Search = () => {
   return (
-    <View>
-      <Text>Search</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Searchbar />
+      <Genres />
+    </SafeAreaView>
   )
 }
 
