@@ -46,15 +46,27 @@ export default StyleSheet.create({
         fontSize: 20,
         fontStyle: 'italic',
     },
+    trackDetail: {
+        flex: 1,
+        paddingLeft: 20,
+        paddingRight: 20,
+        justifyContent: 'space-evenly',
+    },
     trackName: {
         fontSize: 22,
         fontWeight: 'bold',
     },
     trackArtistName: {
-        fontSize: 20,
+        fontSize: 16,
+    },
+    trackLike: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        paddingRight: 10,
+        alignItems: 'center',
     },
     trackDuration: {
-        fontSize: 20,
+        fontSize: 18,
         fontStyle: 'italic',
     }
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { SafeAreaView, View, Text, Image } from 'react-native';
+import { AntDesign } from '@expo/vector-icons';
 import styles from './Musiclist.style';
 
 const Musiclist = ({music}) => {
@@ -34,11 +35,16 @@ const Musiclist = ({music}) => {
         }
         else if (music.type === 'track') {
             return <View style={styles.renderContainer}>
-                <Image style={styles.musicImage} source={{uri: music.artist.picture_medium}}/>
-                <View style={styles.musicDetail}>
-                    <Text style={styles.trackName}>{music.title}</Text>
-                    <Text style={styles.trackArtistName}>{music.artist.name}</Text>
-                    <Text style={styles.trackDuration}>Duration: {music.duration} sec.</Text>
+                <Image style={styles.musicImage} source={{uri: music.album.cover_medium}}/>
+                <View style={styles.trackDetail}>
+                    <View>
+                        <Text style={styles.trackName}>{music.title}</Text>
+                        <Text style={styles.trackArtistName}>{music.artist.name}</Text>
+                    </View>
+                    <View style={styles.trackLike}>
+                        <Text style={styles.trackDuration}>Duration: {music.duration} sec.</Text>
+                        <AntDesign name='heart' size={30} color='red' />
+                    </View>
                 </View>
             </View>
         }
