@@ -28,12 +28,28 @@ const musicListSlice = createSlice({
     },
 });
 
+const genreMusicListSlice = createSlice({
+    name: 'genreMusicList',
+    initialState: {
+        genreMusicList: [],
+    },
+    reducers: {
+        setGenreMusicList: (state, action) => {
+            return {
+                genreMusicList: action.payload,
+            };
+        },
+    },
+});
+
 export const {setUser} = userSlice.actions;
 export const {setMusicList} = musicListSlice.actions;
+export const {setGenreMusicList} = genreMusicListSlice.actions;
 
 export const store = configureStore({
     reducer: combineReducers({
         user: userSlice.reducer,
         musicList: musicListSlice.reducer,
+        genreMusicList: genreMusicListSlice.reducer,
     }),
 });
