@@ -11,10 +11,14 @@ import { useNavigation } from '@react-navigation/native';
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { updateProfile } from "firebase/auth";
 import { auth } from '../../../store/firebase';
+import { useSelector } from 'react-redux';
 import styles from './SignUp.style';
 
 const SignUp = () => {
+
   const navigation = useNavigation();
+  const {theme} = useSelector(state => state.theme);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordAgain, setPasswordAgain] = useState('');
@@ -42,7 +46,7 @@ const SignUp = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <Text style={styles.title}>Create new account!</Text>
       <View style={styles.getInformation}>
         <View style={styles.getInformationArea}>

@@ -1,14 +1,17 @@
 import React from 'react';
 import { SafeAreaView, View, Text, Pressable, Alert } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
+import { ThemeProvider, useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
 import { setGenreMusicList, setGenreMusicImage } from '../../store/store';
 import axios from 'axios';
 import styles from './Genres.style';
 
 const Genres = () => {
+
     const navigation = useNavigation();
     const dispatch = useDispatch();
+
+    const {theme} = useSelector(state => state.theme);
 
     const gotoGenreList = (key) => {
 
@@ -29,7 +32,7 @@ const Genres = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-        <Text style={styles.title}>Genres</Text>
+        <Text style={[styles.title, {color: theme.color}]}>Genres</Text>
         <View style={styles.genres}>
             <Pressable style={styles.genreArea} onPress={() => gotoGenreList('302127')}>
                 <Text style={styles.genreText}>Dans</Text>

@@ -9,9 +9,14 @@ import { Feather } from '@expo/vector-icons';
 import styles from './Search.style';
 
 const Search = () => {
+
   const [focusOrBlur, setFocusOrBlur] = useState(false);
+
   const searchMusic = useSelector(state => state.searchMusic);
+  const {theme} = useSelector(state => state.theme);
+
   const renderSearchMusic = ({item}) => <SearchMusiclist searchedMusic={item}/>
+
   const dispatch = useDispatch();
  
   const searchBarFocused = () => {
@@ -24,7 +29,7 @@ const Search = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <Searchbar focused={searchBarFocused} />
       {
         focusOrBlur === true ? (

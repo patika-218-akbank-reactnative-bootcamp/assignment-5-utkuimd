@@ -8,8 +8,11 @@ import styles from './Settings.style';
 
 const Settings = () => {
   const user = useSelector(state => state.user);
+  const {theme} = useSelector(state => state.theme);
+
   const dispatch = useDispatch();
   const navigation = useNavigation();
+
   const profilePictureURL = JSON.parse(user.user).photoURL;
 
   const logout = async () => {
@@ -26,14 +29,14 @@ const Settings = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <View style={styles.userDetail}>
         <Image
           style={styles.profilePicture}
           source={{ uri: profilePictureURL }}
         />
-        <Text style={styles.username}>{JSON.parse(user.user).username}</Text>
-        <Text style={styles.email}>{JSON.parse(user.user).email}</Text>
+        <Text style={[styles.username, {color: theme.color}]}>{JSON.parse(user.user).username}</Text>
+        <Text style={[styles.email, {color: theme.color}]}>{JSON.parse(user.user).email}</Text>
       </View>
       <View style={styles.settingsButtons_div}>
         <Pressable style={styles.settingsButton} onPress={gotoEditProfile}>

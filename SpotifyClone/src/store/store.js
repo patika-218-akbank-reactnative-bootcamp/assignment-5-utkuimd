@@ -1,4 +1,6 @@
 import { configureStore, createSlice, combineReducers } from "@reduxjs/toolkit";
+import darkTheme from '../../src/constants/dark';
+import lightTheme from '../../src/constants/light';
 
 const userSlice = createSlice({
     name: 'user',
@@ -85,12 +87,33 @@ const searchMusicSlice = createSlice({
     },
 });
 
+const themeSlice = createSlice({
+    name: 'theme',
+    initialState: {
+      theme: lightTheme,
+    },
+    reducers: {
+      handleLightTheme: state => {
+        return {
+          theme: state.theme === lightTheme ? darkTheme : lightTheme,
+        };
+      },
+      handleDarkTheme: state => {
+        return {
+          theme: state.theme === darkTheme ? lightTheme : darkTheme,
+        };
+      },
+    },
+  });
+
 export const {setUser} = userSlice.actions;
 export const {setMusicList} = musicListSlice.actions;
 export const {setGenreMusicList} = genreMusicListSlice.actions;
 export const {setGenreMusicImage} = genreMusicImageSlice.actions;
 export const {setLikeMusic} = likeMusicSlice.actions;
 export const {setSearchMusic} = searchMusicSlice.actions;
+export const {handleLightTheme} = themeSlice.actions;
+export const {handleDarkTheme} = themeSlice.actions;
 
 export const store = configureStore({
     reducer: combineReducers({
@@ -100,5 +123,6 @@ export const store = configureStore({
         genreMusicImage: genreMusicImageSlice.reducer,
         likeMusic: likeMusicSlice.reducer,
         searchMusic: searchMusicSlice.reducer,
+        theme: themeSlice.reducer,
     }),
 });

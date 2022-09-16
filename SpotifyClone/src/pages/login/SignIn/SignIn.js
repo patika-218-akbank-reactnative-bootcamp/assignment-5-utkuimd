@@ -11,13 +11,14 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../../store/firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUser } from '../../../store/store';
 import styles from './SignIn.style';
 
 const SignIn = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
+  const {theme} = useSelector(state => state.theme);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -44,7 +45,7 @@ const SignIn = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
       <Text style={styles.welcomeText}>Welcome to Spotify Clone App!</Text>
       <View style={styles.getInformation}>
         <View style={styles.getInformationArea}>

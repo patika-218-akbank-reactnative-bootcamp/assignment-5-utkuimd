@@ -6,10 +6,14 @@ import { useSelector } from 'react-redux';
 import styles from './Home.style';
 
 const Home = () => {
+
     const musicList = useSelector(state => state.musicList);
+    const {theme} = useSelector(state => state.theme);
+
     const renderMusic = ({item}) => <Musiclist music={item} />
+
   return (
-      <SafeAreaView style={styles.container}>
+      <SafeAreaView style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
           <FlatList
             ListHeaderComponent={<Categories />}
             data={musicList.musicList.data}

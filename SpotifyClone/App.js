@@ -52,6 +52,7 @@ const MainStackNavigator = () => {
 }
 
 const LoginStack = () => {
+  const {theme} = useSelector(state => state.theme);
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -62,19 +63,32 @@ const LoginStack = () => {
       <Stack.Screen
         name="SignUpScreen"
         component={SignUp}
-        options={{headerTitle: 'Sign Up!', headerTitleAlign: 'center'}}
+        options={{
+          headerTitle: 'Sign Up!',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+          headerTitleAlign: 'center',
+          headerTintColor: theme.color,
+        }}
       />
     </Stack.Navigator>
   )
 }
 
 const MainBottomTab = () => {
+  const {theme} = useSelector(state => state.theme);
   return (
-    <BottomTab.Navigator>
+    <BottomTab.Navigator screenOptions={{tabBarStyle: {backgroundColor: theme.headerColor}}}>
       <BottomTab.Screen
         name="HomeScreen"
         component={Home}
-        options={{headerTitle: 'Home', headerTitleAlign: 'center', tabBarLabel: 'Home'}}
+        options={{
+          headerTitle: 'Home',
+          headerTitleAlign: 'center',
+          tabBarLabel: 'Home',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+        }}
       />
       <BottomTab.Screen
         name="SearchScreens"
@@ -91,44 +105,80 @@ const MainBottomTab = () => {
 }
 
 const SearchStack = () => {
+  const {theme} = useSelector(state => state.theme);
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="SearchScreen"
         component={Search}
-        options={{headerTitle: 'Search', headerTitleAlign: 'center'}}
+        options={{
+          headerTitle: 'Search',
+          headerTitleAlign: 'center',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+        }}
       />
       <Stack.Screen
         name="GenreListScreen"
         component={Genrelist}
-        options={{headerTitle: 'Genre Name', headerTitleAlign: 'center'}}
+        options={{
+          headerTitle: 'Genre Name',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+          headerTitleAlign: 'center',
+          headerTintColor: theme.color,
+        }}
       />
     </Stack.Navigator>
   )
 }
 
 const ProfileStack = () => {
+  const {theme} = useSelector(state => state.theme);
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="ProfileScreen"
         component={Profile}
-        options={{headerTitle: 'Profile', headerTitleAlign: 'center'}} 
+        options={{
+          headerTitle: 'Profile',
+          headerTitleAlign: 'center',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+        }} 
       />
       <Stack.Screen
         name="SettingsScreen"
         component={Settings}
-        options={{headerTitle: 'Settings', headerTitleAlign: 'center'}}
+        options={{
+          headerTitle: 'Settings',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+          headerTitleAlign: 'center',
+          headerTintColor: theme.color,
+        }}
       />
       <Stack.Screen
         name="ChangeThemeScreen"
         component={ChangeTheme}
-        options={{headerTitle: 'Change Theme', headerTitleAlign: 'center'}}
+        options={{
+          headerTitle: 'Change Theme',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+          headerTitleAlign: 'center',
+          headerTintColor: theme.color,
+        }}
       />
       <Stack.Screen
         name="EditProfileScreen"
         component={EditProfile}
-        options={{headerTitle: 'Edit Profile', headerTitleAlign: 'center'}}
+        options={{
+          headerTitle: 'Edit Profile',
+          headerStyle: {backgroundColor: theme.headerColor},
+          headerTitleStyle: {color: theme.color},
+          headerTitleAlign: 'center',
+          headerTintColor: theme.color,
+        }}
       />
     </Stack.Navigator>
   )

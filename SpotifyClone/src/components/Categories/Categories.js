@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { SafeAreaView, View, Text, Pressable, Alert } from 'react-native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setMusicList } from '../../store/store';
 import axios from 'axios';
 import styles from './Categories.style';
@@ -8,6 +8,7 @@ import styles from './Categories.style';
 const Categories = () => {
 
     const dispatch = useDispatch();
+    const {theme} = useSelector(state => state.theme);
 
     const getMusics = (key) => {
         axios.get(`https://api.deezer.com/chart/0/${key}`)
@@ -23,7 +24,7 @@ const Categories = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Playlists & Categories</Text>
+      <Text style={[styles.title, {color: theme.color}]}>Playlists & Categories</Text>
       <View style={styles.categories}>
         <Pressable style={styles.categoryArea} onPress={() => getMusics('albums')}>
           <Text style={styles.categoryText}>Albums</Text>
