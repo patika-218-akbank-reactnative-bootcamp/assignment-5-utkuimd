@@ -3,7 +3,7 @@ import {StyleSheet, Dimensions} from 'react-native';
 export default StyleSheet.create({
     container: {
         width: '100%',
-        height: Dimensions.get('screen').height / 4,
+        height: Dimensions.get('screen').height / 3.5,
         justifyContent: 'center',
       },
       title: {

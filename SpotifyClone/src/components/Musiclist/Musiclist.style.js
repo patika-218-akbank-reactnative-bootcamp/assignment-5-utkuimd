@@ -16,15 +16,17 @@ export default StyleSheet.create({
     },
     musicDetail: {
         flex: 1,
-        marginLeft: 20,
-        marginTop: 10,
+        paddingLeft: 20,
+        paddingRight: 20,
+        paddingTop: 10,
     },
     albumTitle: {
         fontSize: 22,
         fontWeight: 'bold',
     },
     albumArtistName: {
-        fontSize: 20,
+        fontSize: 16,
+        marginTop: 2,
     },
     artistName: {
         fontSize: 26,
@@ -35,16 +37,19 @@ export default StyleSheet.create({
     },
     playlistDetail: {
         flex: 1,
-        justifyContent: 'space-evenly',
-        marginLeft: 20,
+        justifyContent: 'center',
+        paddingLeft: 20,
+        paddingRight: 20,
     },
     playlistName: {
         fontSize: 22,
         fontWeight: 'bold',
     },
     playlistDate: {
-        fontSize: 20,
+        fontSize: 16,
         fontStyle: 'italic',
+        alignSelf: 'flex-end',
+        marginTop: 2,
     },
     trackDetail: {
         flex: 1,

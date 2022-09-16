@@ -7,7 +7,6 @@ export default StyleSheet.create({
     header: {
         width: '100%',
         height: Dimensions.get('screen').height / 12,
-        backgroundColor: 'green',
         flexDirection: 'row',
         alignItems: 'center',
         paddingLeft: 20,
@@ -28,5 +27,15 @@ export default StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
         marginLeft: 7,
-    }
+    },
+    likedMusicsTitleArea: {
+        width: '100%',
+        height: Dimensions.get('screen').height / 8,
+        justifyContent: 'center',
+        paddingLeft: 20,
+    },
+    likedMusicsTitle: {
+        fontSize: 28,
+        fontWeight: 'bold',
+    },
 })

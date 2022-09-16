@@ -7,7 +7,9 @@ import { AntDesign } from '@expo/vector-icons';
 import styles from './Musiclist.style';
 
 const Musiclist = ({music}) => {
+
     const dispatch = useDispatch();
+
     const likeMusic = (id) => {
         axios.get(`https://api.deezer.com/track/${id}`)
         .then((response) => {
@@ -21,7 +23,7 @@ const Musiclist = ({music}) => {
             return <View style={styles.renderContainer}>
                 <Image style={styles.musicImage} source={{uri: music.cover_medium ? music.cover_medium : music.artist.picture_medium}}/>
                 <View style={styles.musicDetail}>
-                    <Text style={styles.albumTitle}>{music.title}</Text>
+                    <Text numberOfLines={2} style={styles.albumTitle}>{music.title}</Text>
                     <Text style={styles.albumArtistName}>{music.artist.name}</Text>
                 </View>
             </View>

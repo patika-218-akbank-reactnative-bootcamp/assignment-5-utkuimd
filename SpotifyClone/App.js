@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -54,8 +54,16 @@ const MainStackNavigator = () => {
 const LoginStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="SignInScreen" component={SignIn} options={{headerShown: false}}/>
-      <Stack.Screen name="SignUpScreen" component={SignUp} />
+      <Stack.Screen
+        name="SignInScreen"
+        component={SignIn}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SignUpScreen"
+        component={SignUp}
+        options={{headerTitle: 'Sign Up!', headerTitleAlign: 'center'}}
+      />
     </Stack.Navigator>
   )
 }
@@ -63,9 +71,21 @@ const LoginStack = () => {
 const MainBottomTab = () => {
   return (
     <BottomTab.Navigator>
-      <BottomTab.Screen name="HomeScreen" component={Home} />
-      <BottomTab.Screen name="SearchScreens" component={SearchStack} options={{headerShown: false}} />
-      <BottomTab.Screen name="ProfileScreens" component={ProfileStack} options={{headerShown: false}} />
+      <BottomTab.Screen
+        name="HomeScreen"
+        component={Home}
+        options={{headerTitle: 'Home', headerTitleAlign: 'center', tabBarLabel: 'Home'}}
+      />
+      <BottomTab.Screen
+        name="SearchScreens"
+        component={SearchStack}
+        options={{headerShown: false, tabBarLabel: 'Search'}}
+      />
+      <BottomTab.Screen
+        name="ProfileScreens"
+        component={ProfileStack}
+        options={{headerShown: false, tabBarLabel: 'Profile'}}
+      />
     </BottomTab.Navigator>
   )
 }
@@ -73,8 +93,16 @@ const MainBottomTab = () => {
 const SearchStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="SearchScreen" component={Search} />
-      <Stack.Screen name="GenreListScreen" component={Genrelist} />
+      <Stack.Screen
+        name="SearchScreen"
+        component={Search}
+        options={{headerTitle: 'Search', headerTitleAlign: 'center'}}
+      />
+      <Stack.Screen
+        name="GenreListScreen"
+        component={Genrelist}
+        options={{headerTitle: 'Genre Name', headerTitleAlign: 'center'}}
+      />
     </Stack.Navigator>
   )
 }
@@ -82,10 +110,26 @@ const SearchStack = () => {
 const ProfileStack = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="ProfileScreen" component={Profile} />
-      <Stack.Screen name="SettingsScreen" component={Settings} />
-      <Stack.Screen name="ChangeThemeScreen" component={ChangeTheme} />
-      <Stack.Screen name="EditProfileScreen" component={EditProfile} />
+      <Stack.Screen
+        name="ProfileScreen"
+        component={Profile}
+        options={{headerTitle: 'Profile', headerTitleAlign: 'center'}} 
+      />
+      <Stack.Screen
+        name="SettingsScreen"
+        component={Settings}
+        options={{headerTitle: 'Settings', headerTitleAlign: 'center'}}
+      />
+      <Stack.Screen
+        name="ChangeThemeScreen"
+        component={ChangeTheme}
+        options={{headerTitle: 'Change Theme', headerTitleAlign: 'center'}}
+      />
+      <Stack.Screen
+        name="EditProfileScreen"
+        component={EditProfile}
+        options={{headerTitle: 'Edit Profile', headerTitleAlign: 'center'}}
+      />
     </Stack.Navigator>
   )
 }

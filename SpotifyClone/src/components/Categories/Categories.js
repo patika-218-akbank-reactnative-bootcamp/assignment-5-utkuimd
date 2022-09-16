@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { SafeAreaView, View, Text, Pressable, Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { setMusicList } from '../../store/store';
@@ -15,15 +15,11 @@ const Categories = () => {
             dispatch(setMusicList(response.data));
         })
         .catch((error) => Alert.alert(error.message));
-    }
+    };
 
-    /*const getGenres = () => {
-        axios.get('https://api.deezer.com/genre')
-        .then((response) => {
-            dispatch(setMusicList(response.data));
-        })
-        .catch((error) => Alert.alert(error.message));
-    }*/
+    useEffect(() => {
+      getMusics('albums');
+    }, []);
 
   return (
     <SafeAreaView style={styles.container}>

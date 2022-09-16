@@ -6,7 +6,6 @@ export default StyleSheet.create({
     height: Dimensions.get('screen').height / 6,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'orange',
   },
   searchBarArea: {
     flexDirection: 'row',

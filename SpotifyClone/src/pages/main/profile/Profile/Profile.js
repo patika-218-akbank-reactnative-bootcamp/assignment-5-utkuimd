@@ -15,9 +15,7 @@ const Profile = () => {
     const gotoSettings = () => {
         navigation.navigate('SettingsScreen');
     };
-    const show = () => {
-        console.log(likedMusicList);
-    }
+
   return (
       <SafeAreaView style={styles.container}>
           <View style={styles.header}>
@@ -27,11 +25,13 @@ const Profile = () => {
               </View>
               <Feather name="settings" size={30} color="black" onPress={gotoSettings} />
           </View>
-          <Text onPress={show}>showwwwwww</Text>
-          {<FlatList 
+          <View style={styles.likedMusicsTitleArea}>
+            <Text style={styles.likedMusicsTitle}>Liked Musics</Text>
+          </View>
+          <FlatList 
             data={likedMusicList.likeMusic}
             renderItem={renderLikedMusicList}
-  />}
+            />
       </SafeAreaView>
   )
 }

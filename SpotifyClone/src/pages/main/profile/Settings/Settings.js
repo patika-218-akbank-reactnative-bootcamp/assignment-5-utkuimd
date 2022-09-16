@@ -21,6 +21,10 @@ const Settings = () => {
     navigation.navigate('EditProfileScreen');
   };
 
+  const gotoChangeTheme = () => {
+    navigation.navigate('ChangeThemeScreen');
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.userDetail}>
@@ -35,7 +39,7 @@ const Settings = () => {
         <Pressable style={styles.settingsButton} onPress={gotoEditProfile}>
           <Text style={styles.settingsButton_text}>Edit Profile</Text>
         </Pressable>
-        <Pressable style={styles.settingsButton} onPress={null}>
+        <Pressable style={styles.settingsButton} onPress={gotoChangeTheme}>
           <Text style={styles.settingsButton_text}>Change Theme</Text>
         </Pressable>
       </View>

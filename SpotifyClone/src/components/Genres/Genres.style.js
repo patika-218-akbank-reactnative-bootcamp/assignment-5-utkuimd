@@ -5,7 +5,6 @@ export default StyleSheet.create({
         width: '100%',
         height: Dimensions.get('screen').height / 2,
         justifyContent: 'center',
-        backgroundColor: 'pink',
       },
       title: {
         fontSize: 28,
