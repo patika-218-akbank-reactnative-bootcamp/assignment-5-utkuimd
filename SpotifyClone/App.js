@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import {View, Text} from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -19,6 +18,8 @@ import Settings from './src/pages/main/profile/Settings';
 import ChangeTheme from './src/pages/main/profile/ChangeTheme';
 import EditProfile from './src/pages/main/profile/EditProfile';
 import Home from './src/pages/main/home';
+import Genrelist from './src/pages/main/search/Genrelist';
+import Search from './src/pages/main/search/Search';
 
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
@@ -63,9 +64,18 @@ const MainBottomTab = () => {
   return (
     <BottomTab.Navigator>
       <BottomTab.Screen name="HomeScreen" component={Home} />
-      <BottomTab.Screen name="SearchScreen" component={Empty} />
+      <BottomTab.Screen name="SearchScreens" component={SearchStack} options={{headerShown: false}} />
       <BottomTab.Screen name="ProfileScreens" component={ProfileStack} options={{headerShown: false}} />
     </BottomTab.Navigator>
+  )
+}
+
+const SearchStack = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="SearchScreen" component={Search} />
+      <Stack.Screen name="GenreListScreen" component={Genrelist} />
+    </Stack.Navigator>
   )
 }
 
@@ -77,28 +87,6 @@ const ProfileStack = () => {
       <Stack.Screen name="ChangeThemeScreen" component={ChangeTheme} />
       <Stack.Screen name="EditProfileScreen" component={EditProfile} />
     </Stack.Navigator>
-  )
-}
-
-const Empty = () => {
-  const user = useSelector(state => state.user);
-
-  const showUser = async () => {
-    const userData = await AsyncStorage.getItem('user');
-    const isUser = userData ? userData : null;
-    console.log(isUser);
-  }
-
-  const showUserInRedux = () => {
-    console.log(user);
-  }
-
-  return (
-    <View>
-      <Text>Empty Screen!</Text>
-      <Text onPress={showUser}>Show User!</Text>
-      <Text onPress={showUserInRedux}>Show user in Redux!</Text>
-    </View>
   )
 }
 
