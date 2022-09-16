@@ -1,9 +1,20 @@
 import React from 'react';
-import { SafeAreaView, View, Text, Image } from 'react-native';
+import { SafeAreaView, View, Text, Image, Alert } from 'react-native';
+import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { setLikeMusic } from '../../store/store';
 import { AntDesign } from '@expo/vector-icons';
 import styles from './Musiclist.style';
 
 const Musiclist = ({music}) => {
+    const dispatch = useDispatch();
+    const likeMusic = (id) => {
+        axios.get(`https://api.deezer.com/track/${id}`)
+        .then((response) => {
+            dispatch(setLikeMusic(response.data));
+        })
+        .catch((error) => {Alert.alert(error.message)});
+    };
 
     const renderMusiclist = () => {
         if (music.type === 'album') {
@@ -43,7 +54,7 @@ const Musiclist = ({music}) => {
                     </View>
                     <View style={styles.trackLike}>
                         <Text style={styles.trackDuration}>Duration: {music.duration} sec.</Text>
-                        <AntDesign name='heart' size={30} color='red' />
+                        <AntDesign name='heart' size={30} color='red' onPress={() => likeMusic(music.id)}/>
                     </View>
                 </View>
             </View>
