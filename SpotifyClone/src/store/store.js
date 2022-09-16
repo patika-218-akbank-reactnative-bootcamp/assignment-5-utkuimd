@@ -42,14 +42,63 @@ const genreMusicListSlice = createSlice({
     },
 });
 
+const genreMusicImageSlice = createSlice({
+    name: 'genreMusicImage',
+    initialState: {
+        genreMusicImage: [],
+    },
+    reducers: {
+        setGenreMusicImage: (state, action) => {
+            return {
+                genreMusicImage: action.payload,
+            };
+        },
+    },
+});
+
+const likeMusicSlice = createSlice({
+    name: 'likeMusic',
+    initialState: {
+        likeMusic: [],
+    },
+    reducers: {
+        setLikeMusic: (state, action) => {
+            return {
+                ...state,
+                likeMusic: [...state.likeMusic, action.payload],
+            };
+        },
+    },
+});
+
+const searchMusicSlice = createSlice({
+    name: 'searchMusic',
+    initialState: {
+        searchMusic: [],
+    },
+    reducers: {
+        setSearchMusic: (state, action) => {
+            return {
+                searchMusic: action.payload,
+            };
+        },
+    },
+});
+
 export const {setUser} = userSlice.actions;
 export const {setMusicList} = musicListSlice.actions;
 export const {setGenreMusicList} = genreMusicListSlice.actions;
+export const {setGenreMusicImage} = genreMusicImageSlice.actions;
+export const {setLikeMusic} = likeMusicSlice.actions;
+export const {setSearchMusic} = searchMusicSlice.actions;
 
 export const store = configureStore({
     reducer: combineReducers({
         user: userSlice.reducer,
         musicList: musicListSlice.reducer,
         genreMusicList: genreMusicListSlice.reducer,
+        genreMusicImage: genreMusicImageSlice.reducer,
+        likeMusic: likeMusicSlice.reducer,
+        searchMusic: searchMusicSlice.reducer,
     }),
 });
