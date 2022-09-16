@@ -1,13 +1,22 @@
 import React from 'react';
-import { SafeAreaView, View, Text, Pressable } from 'react-native';
+import { SafeAreaView, View, Text, Pressable, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { setGenreMusicList } from '../../store/store';
+import axios from 'axios';
 import styles from './Genres.style';
 
 const Genres = () => {
     const navigation = useNavigation();
+    const dispatch = useDispatch();
 
     const gotoGenreList = (key) => {
-        navigation.navigate( 'GenreListScreen', { genreID: key } );
+        axios.get(`https://api.deezer.com/album/${key}`)
+        .then((response) => {
+            dispatch(setGenreMusicList(response.data));
+        })
+        .catch((error) => Alert.alert(error.message));
+        navigation.navigate('GenreListScreen');
     };
 
   return (
