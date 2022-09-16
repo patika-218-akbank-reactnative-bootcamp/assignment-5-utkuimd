@@ -1,12 +1,23 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { SafeAreaView, FlatList, View } from 'react-native';
+import { useSelector } from 'react-redux';
+import GenreMusiclist from '../../../../components/GenreMusiclist';
 import styles from './Genrelist.style';
 
 const Genrelist = () => {
+
+  const genreMusicList = useSelector(state => state.genreMusicList)
+  const renderGenreMusicList = ({item}) => <GenreMusiclist genreMusic={item} />
+
   return (
-    <View>
-      <Text>Genrelist</Text>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <View style={styles.list}>
+        <FlatList 
+          data={genreMusicList.genreMusicList.tracks.data}
+          renderItem={renderGenreMusicList} 
+        />
+      </View>
+    </SafeAreaView>
   )
 }
 
