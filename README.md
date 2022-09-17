@@ -20,7 +20,7 @@
 + If you press logout button, you user data will erase and you will direct to sign in screen.<br>
 
 ***PRESENTATION VİDEO OF MY PROJECT*** :<br>
-
+https://www.youtube.com/watch?v=VI0eDbGdGeM
 
 ***REQUİRED*** :<br>
 :heavy_check_mark: This project was created by using Expo CLI.<br>
